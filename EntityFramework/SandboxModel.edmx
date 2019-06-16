@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SANDBOX2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AUTHORS">
+          <Key>
+            <PropertyRef Name="AuthorId" />
+          </Key>
+          <Property Name="AuthorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="COURSES">
+          <Key>
+            <PropertyRef Name="CourseId" />
+          </Key>
+          <Property Name="CourseId" Type="int" Nullable="false" />
+          <Property Name="AuthorId" Type="int" />
+          <Property Name="Title" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Price" Type="smallint" Nullable="false" />
+          <Property Name="LevelString" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Level" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserProfiles">
+          <Key>
+            <PropertyRef Name="UserProfileId" />
+          </Key>
+          <Property Name="UserProfileId" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="COURSE__FK__AUTHOR_ID">
+          <End Role="AUTHORS" Type="Self.AUTHORS" Multiplicity="0..1" />
+          <End Role="COURSES" Type="Self.COURSES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AUTHORS">
+              <PropertyRef Name="AuthorId" />
+            </Principal>
+            <Dependent Role="COURSES">
+              <PropertyRef Name="AuthorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SANDBOX2ModelStoreContainer">
+          <EntitySet Name="AUTHORS" EntityType="Self.AUTHORS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="COURSES" EntityType="Self.COURSES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserProfiles" EntityType="Self.UserProfiles" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="COURSE__FK__AUTHOR_ID" Association="Self.COURSE__FK__AUTHOR_ID">
+            <End Role="AUTHORS" EntitySet="AUTHORS" />
+            <End Role="COURSES" EntitySet="COURSES" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SANDBOX2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AUTHOR">
+          <Key>
+            <PropertyRef Name="AuthorId" />
+          </Key>
+          <Property Name="AuthorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="COURSES" Relationship="Self.COURSE__FK__AUTHOR_ID" FromRole="AUTHORS" ToRole="COURSES" />
+        </EntityType>
+        <EntityType Name="COURSE">
+          <Key>
+            <PropertyRef Name="CourseId" />
+          </Key>
+          <Property Name="CourseId" Type="Int32" Nullable="false" />
+          <Property Name="AuthorId" Type="Int32" />
+          <Property Name="Title" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Price" Type="Int16" Nullable="false" />
+          <Property Name="LevelString" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Level" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="AUTHOR" Relationship="Self.COURSE__FK__AUTHOR_ID" FromRole="COURSES" ToRole="AUTHORS" />
+        </EntityType>
+        <Association Name="COURSE__FK__AUTHOR_ID">
+          <End Role="AUTHORS" Type="Self.AUTHOR" Multiplicity="0..1" />
+          <End Role="COURSES" Type="SANDBOX2Model.COURSE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AUTHORS">
+              <PropertyRef Name="AuthorId" />
+            </Principal>
+            <Dependent Role="COURSES">
+              <PropertyRef Name="AuthorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SANDBOX2Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AUTHORS" EntityType="Self.AUTHOR" />
+          <EntitySet Name="COURSES" EntityType="SANDBOX2Model.COURSE" />
+          <AssociationSet Name="COURSE__FK__AUTHOR_ID" Association="Self.COURSE__FK__AUTHOR_ID">
+            <End Role="AUTHORS" EntitySet="AUTHORS" />
+            <End Role="COURSES" EntitySet="COURSES" />
+          </AssociationSet>
+          <EntitySet Name="UserProfiles" EntityType="SANDBOX2Model.UserProfile" />
+        </EntityContainer>
+        <EntityType Name="UserProfile">
+          <Key>
+            <PropertyRef Name="UserProfileId" />
+          </Key>
+          <Property Name="UserProfileId" Type="Int32" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SANDBOX2ModelStoreContainer" CdmEntityContainer="SANDBOX2Entities">
+          <EntitySetMapping Name="AUTHORS">
+            <EntityTypeMapping TypeName="SANDBOX2Model.AUTHOR">
+              <MappingFragment StoreEntitySet="AUTHORS">
+                <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COURSES">
+            <EntityTypeMapping TypeName="SANDBOX2Model.COURSE">
+              <MappingFragment StoreEntitySet="COURSES">
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+                <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="LevelString" ColumnName="LevelString" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserProfiles">
+            <EntityTypeMapping TypeName="SANDBOX2Model.UserProfile">
+              <MappingFragment StoreEntitySet="UserProfiles">
+                <ScalarProperty Name="UserProfileId" ColumnName="UserProfileId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
