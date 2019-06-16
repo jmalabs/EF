@@ -55,13 +55,27 @@
     <Compile Include="Migrations\201906161022002_InitialModel.Designer.cs">
       <DependentUpon>201906161022002_InitialModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906161038147_AddTestModel.cs" />
+    <Compile Include="Migrations\201906161038147_AddTestModel.Designer.cs">
+      <DependentUpon>201906161038147_AddTestModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906161125196_AddCategoriesTable.cs" />
+    <Compile Include="Migrations\201906161125196_AddCategoriesTable.Designer.cs">
+      <DependentUpon>201906161125196_AddCategoriesTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906161218200_AddTagsData.cs" />
+    <Compile Include="Migrations\201906161218200_AddTagsData.Designer.cs">
+      <DependentUpon>201906161218200_AddTagsData.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Author.cs" />
+    <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\CourseLevel.cs" />
     <Compile Include="Models\Tag.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Test\TestModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -70,6 +84,15 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201906161022002_InitialModel.resx">
       <DependentUpon>201906161022002_InitialModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906161038147_AddTestModel.resx">
+      <DependentUpon>201906161038147_AddTestModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906161125196_AddCategoriesTable.resx">
+      <DependentUpon>201906161125196_AddCategoriesTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906161218200_AddTagsData.resx">
+      <DependentUpon>201906161218200_AddTagsData.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

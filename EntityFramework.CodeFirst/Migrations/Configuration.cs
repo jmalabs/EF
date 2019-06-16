@@ -14,10 +14,28 @@ namespace EntityFramework.CodeFirst.Migrations
 
         protected override void Seed(EntityFramework.CodeFirst.Data.EFContext context)
         {
-            //  This method will be called after migrating to the latest version.
+            context.Tags.AddOrUpdate(a => a.Name, new Models.Tag()
+            {
+                Name = "Tag 1"
+            });
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data.
+            context.Tags.AddOrUpdate(a => a.Name, new Models.Tag()
+            {
+                Name = "Tag 2"
+            });
+            context.Tags.AddOrUpdate(a => a.Name, new Models.Tag()
+            {
+                Name = "Tag 3"
+            });
+
+            context.Tags.AddOrUpdate(a => a.Name, new Models.Tag()
+            {
+                Name = "Tag 3"
+            });
+            context.Tags.AddOrUpdate(a => a.Name, new Models.Tag()
+            {
+                Name = "Tag 4"
+            });
         }
     }
 }
