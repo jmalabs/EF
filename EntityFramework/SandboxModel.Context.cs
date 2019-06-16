@@ -12,6 +12,8 @@ namespace EntityFramework
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class SANDBOX2Entities : DbContext
     {
@@ -28,5 +30,10 @@ namespace EntityFramework
         public virtual DbSet<AUTHOR> AUTHORS { get; set; }
         public virtual DbSet<COURSE> COURSES { get; set; }
         public virtual DbSet<UserProfile> UserProfiles { get; set; }
+    
+        public virtual ObjectResult<GetCourses_Result> GetCourses()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetCourses_Result>("GetCourses");
+        }
     }
 }

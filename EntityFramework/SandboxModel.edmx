@@ -42,6 +42,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="GetCourses" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="SANDBOX2ModelStoreContainer">
           <EntitySet Name="AUTHORS" EntityType="Self.AUTHORS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="COURSES" EntityType="Self.COURSES" Schema="dbo" store:Type="Tables" />
@@ -96,6 +97,7 @@
             <End Role="COURSES" EntitySet="COURSES" />
           </AssociationSet>
           <EntitySet Name="UserProfiles" EntityType="SANDBOX2Model.UserProfile" />
+          <FunctionImport Name="GetCourses" ReturnType="Collection(SANDBOX2Model.GetCourses_Result)" />
         </EntityContainer>
         <EntityType Name="UserProfile">
           <Key>
@@ -103,6 +105,15 @@
           </Key>
           <Property Name="UserProfileId" Type="Int32" Nullable="false" />
         </EntityType>
+        <ComplexType Name="GetCourses_Result">
+          <Property Type="Int32" Name="CourseId" Nullable="false" />
+          <Property Type="Int32" Name="AuthorId" Nullable="true" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="255" />
+          <Property Type="Int16" Name="Price" Nullable="false" />
+          <Property Type="String" Name="LevelString" Nullable="false" MaxLength="50" />
+          <Property Type="Byte" Name="Level" Nullable="false" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -137,6 +148,19 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetCourses" FunctionName="SANDBOX2Model.Store.GetCourses">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="SANDBOX2Model.GetCourses_Result">
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+                <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="LevelString" ColumnName="LevelString" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

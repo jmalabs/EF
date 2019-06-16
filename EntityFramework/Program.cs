@@ -10,6 +10,16 @@ namespace EntityFramework
     {
         static void Main(string[] args)
         {
+            var context = new SANDBOX2Entities();
+            var courses = context.GetCourses();
+
+            foreach (var c in courses)
+            {
+                Console.WriteLine(c.Title);
+
+            }
+
+            Console.ReadLine();
         }
     }
 }
