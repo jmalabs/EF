@@ -10,18 +10,12 @@
 namespace EntityFramework
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class COURSE
+    [Flags]
+    public enum CourseLevel : sbyte
     {
-        public int CourseId { get; set; }
-        public Nullable<int> AuthorId { get; set; }
-        public string Title { get; set; }
-        public string Description { get; set; }
-        public short Price { get; set; }
-        public string LevelString { get; set; }
-        public CourseLevel Level { get; set; }
-    
-        public virtual AUTHOR AUTHOR { get; set; }
+        Beginner = 1,
+        Intermediate = 2,
+        Advance = 3
     }
 }

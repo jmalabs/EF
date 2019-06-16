@@ -74,7 +74,7 @@
           <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Price" Type="Int16" Nullable="false" />
           <Property Name="LevelString" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Level" Type="Byte" Nullable="false" />
+          <Property Name="Level" Type="SANDBOX2Model.CourseLevel" Nullable="false" />
           <NavigationProperty Name="AUTHOR" Relationship="Self.COURSE__FK__AUTHOR_ID" FromRole="COURSES" ToRole="AUTHORS" />
         </EntityType>
         <Association Name="COURSE__FK__AUTHOR_ID">
@@ -114,6 +114,11 @@
           <Property Type="String" Name="LevelString" Nullable="false" MaxLength="50" />
           <Property Type="Byte" Name="Level" Nullable="false" />
         </ComplexType>
+        <EnumType Name="CourseLevel" UnderlyingType="SByte" IsFlags="true">
+          <Member Name="Beginner" Value="1" />
+          <Member Name="Intermediate" Value="2" />
+          <Member Name="Advance" Value="3" />
+        </EnumType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
