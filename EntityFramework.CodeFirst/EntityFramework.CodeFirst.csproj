@@ -51,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\EFContext.cs" />
+    <Compile Include="EntityConfigurations\CourseConfiguration.cs" />
     <Compile Include="Migrations\201906161022002_InitialModel.cs" />
     <Compile Include="Migrations\201906161022002_InitialModel.Designer.cs">
       <DependentUpon>201906161022002_InitialModel.cs</DependentUpon>
@@ -75,11 +76,24 @@
     <Compile Include="Migrations\201906201406320_RenameCourseTitleColumnToName.Designer.cs">
       <DependentUpon>201906201406320_RenameCourseTitleColumnToName.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906201435444_OverrideConfigurationUsingFluentAPI.cs" />
+    <Compile Include="Migrations\201906201435444_OverrideConfigurationUsingFluentAPI.Designer.cs">
+      <DependentUpon>201906201435444_OverrideConfigurationUsingFluentAPI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906201442475_UpdateCourseTagsIds.cs" />
+    <Compile Include="Migrations\201906201442475_UpdateCourseTagsIds.Designer.cs">
+      <DependentUpon>201906201442475_UpdateCourseTagsIds.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906201454356_MoveToEntityConfiguration.cs" />
+    <Compile Include="Migrations\201906201454356_MoveToEntityConfiguration.Designer.cs">
+      <DependentUpon>201906201454356_MoveToEntityConfiguration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Author.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\CourseLevel.cs" />
+    <Compile Include="Models\Cover.cs" />
     <Compile Include="Models\Tag.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -107,6 +121,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906201406320_RenameCourseTitleColumnToName.resx">
       <DependentUpon>201906201406320_RenameCourseTitleColumnToName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906201435444_OverrideConfigurationUsingFluentAPI.resx">
+      <DependentUpon>201906201435444_OverrideConfigurationUsingFluentAPI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906201442475_UpdateCourseTagsIds.resx">
+      <DependentUpon>201906201442475_UpdateCourseTagsIds.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906201454356_MoveToEntityConfiguration.resx">
+      <DependentUpon>201906201454356_MoveToEntityConfiguration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

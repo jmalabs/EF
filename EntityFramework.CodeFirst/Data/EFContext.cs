@@ -1,4 +1,5 @@
-﻿using EntityFramework.CodeFirst.Models;
+﻿using EntityFramework.CodeFirst.EntityConfigurations;
+using EntityFramework.CodeFirst.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -11,7 +12,7 @@ namespace EntityFramework.CodeFirst.Data
     public class EFContext : DbContext
     {
 
-        public EFContext(): base("name=DefaultConnection")
+        public EFContext() : base("name=DefaultConnection")
         {
 
         }
@@ -19,10 +20,13 @@ namespace EntityFramework.CodeFirst.Data
         public DbSet<Author> Authors { get; set; }
         public DbSet<Tag> Tags { get; set; }
         public DbSet<Category> Category { get; set; }
+        public DbSet<Cover> Covers { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Course>().Property(t => t.Description).IsRequired();
+
+            modelBuilder.Configurations.Add(new CourseConfiguration());
+
             base.OnModelCreating(modelBuilder);
         }
     }

@@ -27,5 +27,7 @@ namespace EntityFramework.CodeFirst.Models
         [ForeignKey("AuthorId")]
         public Author Author { get; set; }
         public IList<Tag> Tags { get; set; }
+
+        public Cover Cover { get; set; }
     }
 }
