@@ -19,5 +19,11 @@ namespace EntityFramework.CodeFirst.Data
         public DbSet<Author> Authors { get; set; }
         public DbSet<Tag> Tags { get; set; }
         public DbSet<Category> Category { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Course>().Property(t => t.Description).IsRequired();
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }

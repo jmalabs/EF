@@ -67,6 +67,14 @@
     <Compile Include="Migrations\201906161218200_AddTagsData.Designer.cs">
       <DependentUpon>201906161218200_AddTagsData.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906201404416_AddAnnotableToCourseTable.cs" />
+    <Compile Include="Migrations\201906201404416_AddAnnotableToCourseTable.Designer.cs">
+      <DependentUpon>201906201404416_AddAnnotableToCourseTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906201406320_RenameCourseTitleColumnToName.cs" />
+    <Compile Include="Migrations\201906201406320_RenameCourseTitleColumnToName.Designer.cs">
+      <DependentUpon>201906201406320_RenameCourseTitleColumnToName.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Author.cs" />
     <Compile Include="Models\Category.cs" />
@@ -93,6 +101,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906161218200_AddTagsData.resx">
       <DependentUpon>201906161218200_AddTagsData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906201404416_AddAnnotableToCourseTable.resx">
+      <DependentUpon>201906201404416_AddAnnotableToCourseTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906201406320_RenameCourseTitleColumnToName.resx">
+      <DependentUpon>201906201406320_RenameCourseTitleColumnToName.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
